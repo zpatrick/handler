@@ -5,7 +5,7 @@
 
 ## Usage
 Handler is a collection of common `http.Handlers` used in Go web applications, typically REST APIs. 
-These handlers integrate well with applications that use the [handler.Constructor](https://godoc.org/github.com/zpatrick/rye#Constructor) pattern: 
+These handlers integrate well with applications that use the [handler.Constructor](https://godoc.org/github.com/zpatrick/handler#Constructor) pattern: 
 
 ```go
 type Constructor func(r *http.Request) http.Handler
@@ -68,7 +68,7 @@ After all, software is made _for_ developers).
 
 
 ### Routing 
-[handler.Constructors](https://godoc.org/github.com/zpatrick/rye#Constructor) satisfy the [http.Handler](https://golang.org/pkg/net/http/#Handler) interface,
+[handler.Constructors](https://godoc.org/github.com/zpatrick/handler#Constructor) satisfy the [http.Handler](https://golang.org/pkg/net/http/#Handler) interface,
 so they can be used anywhere a `http.Handler` can. 
 One can use typecasting to convert untyped functions to `handler.Constructor`. 
 Here is an example using handler.Constructors with [gorilla/mux](https://github.com/gorilla/mux):
