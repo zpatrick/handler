@@ -11,6 +11,8 @@ These handlers integrate well with applications that use the [Handler Constructo
 type Constructor func(r *http.Request) http.Handler
 ```
 
+Please see the [example](/example) for a working example. 
+
 ### Why use the Handler Constructor pattern? 
 Well, it depends. Take a look at the following examples: 
 
@@ -71,14 +73,25 @@ so they can be used anywhere a `http.Handler` can.
 Here is an example using Handler Constructors with [gorilla/mux](https://github.com/gorilla/mux):
 
 ```go
+package main
+
+import (
+        "log"
+        "net/http"
+
+        "github.com/gorilla/mux"
+        "github.com/zpatrick/handler"
+)
+
 func Index(r *http.Request) http.Handler {
-	return handler.String(http.StatusOK, "Hello, World!")
+        return handler.String(http.StatusOK, "Hello, World!")
 }
 
 func main() {
-	r := mux.NewRouter()
-	r.Handle("/", handler.Constructor(Index))
+        r := mux.NewRouter()
+        r.Handle("/", handler.Constructor(Index))
 
-	http.ListenAndServe(":8000", r)
+        log.Println("Listening on port 8000")
+        log.Fatal(http.ListenAndServe(":8000", r))
 }
 ```
