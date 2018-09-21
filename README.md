@@ -64,6 +64,7 @@ It is easier for this type of mistake to occur using the conventional pattern, s
 The points made above are enough to convince me to use this pattern for most of my Go applications; but not all of them.
 Here are some reasons you may want avoid using the handler.Constructor pattern: 
 * The size/scope of your project is small. 
+* You need to stream data to the `http.ResponseWriter`. 
 * You find yourself frequently needing access to `w http.ResponseWriter` directly - to the point where the majority of your constructors become nothing more than wrappers around [http.HandlerFuncs](https://golang.org/pkg/net/http/#HandlerFunc). 
 
 
